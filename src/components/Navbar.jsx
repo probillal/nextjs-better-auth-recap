@@ -1,6 +1,13 @@
+"use client";
+import { useSession } from "@/lib/auth-client";
 import { Link } from "@heroui/react";
 
 const Navbar = () => {
+  const { data, isPending } = useSession();
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+  console.log("Navbar session data:", data);
   return (
     <div>
       <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
